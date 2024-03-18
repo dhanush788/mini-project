@@ -5,7 +5,7 @@ function SignUpForm() {
   const [username, setUsername] = useState('');
 
   const handleSignUpClick = () => {
-    handleSignUp(username , true);
+    handleSignUp(username , false);
   };
 
   return (
