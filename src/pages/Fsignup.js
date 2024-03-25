@@ -1,4 +1,6 @@
 import { decode } from "cbor-x";
+import {db} from "./firebase/firebase"
+import { collection, addDoc } from "firebase/firestore"; 
 
 
 async function handleSignUp(username, platform) {
@@ -84,7 +86,7 @@ async function handleSignUp(username, platform) {
     console.log("publicKeyBytes : ", publicKeyBytes)
 
 
-
+    pushTestData()
 
 
   } catch (error) {
@@ -97,6 +99,43 @@ function generateRandomArray(length) {
   window.crypto.getRandomValues(array);
   return array;
 }
+
+const testData = {
+  credentialId: [100,101,102],
+  publicKeyBytes: [500,501,502],
+  username: "jon-Bro"
+};
+
+// Replace 'developerId' and 'projectId' with actual IDs
+const developerId = "UlLgFDWFvUUvL8A3b9pH";
+const projectId = "TqxMGwBYdsdEGImsR3lr";
+const userID = "muk4dXiKas8aS8uz128cOJY1UKWO7sScGQR2HQIaEIk"
+
+// Function to push test data into Firestore
+const pushTestData = async () => {
+  // const userRef = db.collection("developers").doc(developerId)
+  //                 .collection("projects").doc(projectId)
+  //                 .collection("users").doc(userID);
+
+  // userRef.set(testData)
+  // .then(() => {
+  //   console.log("Document successfully written!");
+  // })
+  // .catch((error) => {
+  //   console.error("Error writing document: ", error);
+  // });
+
+    // Use addDoc with the constructed reference
+    const docRef = await addDoc(collection(db, "developers", developerId, "projects", projectId, "users"),
+    {
+        ...testData,
+    });
+
+    console.log("Document written with ID:", docRef);
+  };
+
+  
+
 
 
 

@@ -1,39 +1,7 @@
 async function handleSignIn() {
   const randomStringFromServer = "O_wUisniHDmQdWgwA0f7U5dLwlXOvHt3D74U-3u2Puw"
-  const credentialId = new Uint8Array([
-    159,
-    54,
-    142,
-    100,
-    167,
-    250,
-    108,
-    215,
-    77,
-    27,
-    216,
-    185,
-    143,
-    130,
-    225,
-    92,
-    32,
-    218,
-    248,
-    65,
-    83,
-    174,
-    77,
-    214,
-    80,
-    171,
-    57,
-    158,
-    105,
-    128,
-    68,
-    127
-  ])
+  const credentialId = new Uint8Array([228, 28, 29, 10, 224, 138, 67, 6, 77, 179, 8, 12, 53, 28, 179, 120, 116, 250, 219, 172, 63, 55, 212, 213, 101, 239, 21, 197, 14, 86, 249, 201]
+    )
 
   try {
     // Simulate server response with authentication options
