@@ -108,7 +108,7 @@ function generateRandomArray(length) {
 
 const developerId = "UlLgFDWFvUUvL8A3b9pH";
 const projectId = "TqxMGwBYdsdEGImsR3lr";
-const userID = "muk4dXiKas8aS8uz128cOJY1UKWO7sScGQR2HQIaEIk"
+// const userID = "muk4dXiKas8aS8uz128cOJY1UKWO7sScGQR2HQIaEIk"
 
 // function to push into firestore
 const pushData = async (data) => {

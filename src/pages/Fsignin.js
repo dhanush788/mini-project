@@ -1,7 +1,34 @@
-async function handleSignIn() {
-  const randomStringFromServer = "O_wUisniHDmQdWgwA0f7U5dLwlXOvHt3D74U-3u2Puw"
-  const credentialId = new Uint8Array([228, 28, 29, 10, 224, 138, 67, 6, 77, 179, 8, 12, 53, 28, 179, 120, 116, 250, 219, 172, 63, 55, 212, 213, 101, 239, 21, 197, 14, 86, 249, 201]
-    )
+import { collection, query, where, getDocs } from 'firebase/firestore'
+import {db} from "./firebase/firebase"
+
+const getCredentialIdByUsername = async (username) => {
+  try {
+      const developerId = "UlLgFDWFvUUvL8A3b9pH";
+      const projectId = "TqxMGwBYdsdEGImsR3lr";
+      const q = query(collection(db, 'developers', developerId, 'projects', projectId, 'users'), where('username', '==', username));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+          // If a document with the provided username exists, access its credentialId
+          const docSnapshot = querySnapshot.docs[0]; // Assuming there's only one document per username
+          const userData = docSnapshot.data();
+          const credentialId = userData.credentialId;
+          console.log("credentialId : ", credentialId)
+          return credentialId;
+      } else {
+          console.log('No user found with the provided username.');
+          return null;
+      }
+  } catch (error) {
+      console.error('Error fetching user data:', error);
+      return null;
+  }
+};
+
+async function handleSignIn(username) {
+  const credentialId = new Uint8Array(await getCredentialIdByUsername(username))
+  console.log(credentialId, "credentialId")
+  console.log(username, "username")
 
   try {
     // Simulate server response with authentication options
