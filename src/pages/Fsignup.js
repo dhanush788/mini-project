@@ -12,7 +12,7 @@ async function handleSignUp(username, platform) {
         challenge: challenge,
         rp: {
           name: "Duo Security",
-          id: "localhost",
+          id: "passkey-xi.vercel.app",
       },
         user: {
           id: Uint8Array.from(
