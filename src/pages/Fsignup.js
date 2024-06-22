@@ -99,12 +99,6 @@ async function handleSignUp(username, platform) {
 }
 
 
-function generateRandomArray(length) {
-  const array = new Uint8Array(length);
-  window.crypto.getRandomValues(array);
-  return array;
-}
-
 
 const developerId = "UlLgFDWFvUUvL8A3b9pH";
 const projectId = "TqxMGwBYdsdEGImsR3lr";
