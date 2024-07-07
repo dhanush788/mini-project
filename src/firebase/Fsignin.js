@@ -1,6 +1,5 @@
 import { collection, query, where, getDocs } from 'firebase/firestore'
-import { db } from "./firebase/firebase"
-import webauthn from 'webauthn-json';
+import { db } from "./firebase"
 
 const getCredentialIdByUsername = async (username) => {
   try {

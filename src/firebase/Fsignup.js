@@ -1,5 +1,5 @@
 import { decode } from "cbor-x";
-import {db} from "./firebase/firebase"
+import {db} from "./firebase"
 import { collection, addDoc } from "firebase/firestore"; 
 
 async function handleSignUp(username, platform) {
