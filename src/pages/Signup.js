@@ -6,7 +6,14 @@ function SignUpForm() {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleSignUpClick = () => {
-    handleSignUp(username, isChecked, 'rxr0Zo5E87gJpNYbk5vWQrM4t1u1', 'a2a74345-b6a8-4179-b4d3-daeb7b58715e','passkey-xi.vercel.app');
+    handleSignUp(username, isChecked, process.env.REACT_APP_DEVELOPER_ID, process.env.REACT_APP_PROJECT_ID , 'localhost')
+      .then(() => {
+        alert('Sign up successful');
+      })
+      .catch(error => {
+        console.error('Sign up failed:', error);
+        alert('Sign up failed. Please try again.');
+      });
   };
 
   return (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import handleSignIn from 'passkey_linker/src/auth/handleSignIn';
 
+
 function SignInForm() {
   const [username, setUsername] = useState('');
   const [isChecked, setIsChecked] = useState(false);
@@ -8,8 +9,13 @@ function SignInForm() {
 
   const handleSignInClick = async () => {
     try {
-      const assertion = await handleSignIn(username, 'rxr0Zo5E87gJpNYbk5vWQrM4t1u1', 'a2a74345-b6a8-4179-b4d3-daeb7b58715e', isChecked);
+      const assertion = await handleSignIn(username, process.env.REACT_APP_DEVELOPER_ID, process.env.REACT_APP_PROJECT_ID , isChecked)
       console.log('Assertion:', assertion);
+      if (assertion) {
+        alert('Sign-in successful');
+      } else {
+        alert('Sign-in failed. Please try again.');
+      }
     } catch (error) {
       console.error('Error during sign-in:', error);
     }
